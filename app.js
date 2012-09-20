@@ -22,6 +22,7 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
+  app.use(require('stylus').middleware(__dirname + '/public'));
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
@@ -34,13 +35,12 @@ var articleProvider = new ArticleProvider();
 app.get('/', function(req, res){
   articleProvider.findAll(function(error, docs){
     res.render('index.jade', {
-      
-        title: 'Blog',
-        articles: docs
-      
-    });
+      title: 'Blog',
+      articles: docs
+    })
   });
 });
+
 app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){
