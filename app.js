@@ -67,8 +67,8 @@ app.get('/blog/:id', function(req, res){
 
 app.post('/blog/addComment', function(req, res) {
   articleProvider.addCommentToArticle(req.param('_id'), {
-    person: req.params('person'),
-    comment: req.params('comment'),
+    person: req.param('person'),
+    comment: req.param('comment'),
     create_at: new Date()
   }, function(error, docs) {
       res.redirect('/blog/' + req.param('_id'))
