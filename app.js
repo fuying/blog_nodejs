@@ -56,7 +56,24 @@ app.post('/blog/new', function(req, res){
   });
 });
 
-app.get('/users', user.list);
+app.get('/blog/:id', function(req, res){
+  articleProvider.findById(req.params.id, function(error, article){
+    res.render('blog_show.jade', {
+      title: article.title,
+      article: article
+    })
+  });
+});
+
+app.post('/blog/addComment', function(req, res) {
+  articleProvider.addCommentToArticle(req.param('_id'), {
+    person: req.params('person'),
+    comment: req.params('comment'),
+    create_at: new Date()
+  }, function(error, docs) {
+      res.redirect('/blog/' + req.param('_id'))
+  });
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
