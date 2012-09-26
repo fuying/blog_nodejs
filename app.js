@@ -9,7 +9,7 @@ var express = require('express')
   , http = require('http')
   , path = require('path');
 
-var ArticleProvider = require("./articleprovider-memory").ArticleProvider;
+var ArticleProvider = require("./articleprovider-mongodb").ArticleProvider;
 
 var app = express();
 
