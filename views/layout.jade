@@ -1,7 +1,17 @@
 doctype 5
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+	body
+		div.navbar.navbar-fixed-top
+			div.navbar-inner
+				div.container
+					a(href='/', class='brand') 博客
+		div.container
+			div.page-header
+				block header
+			div.row
+				div.span10
+					block content

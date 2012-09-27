@@ -1,11 +1,15 @@
 extends layout
 
+block header
+	h1= title
+
 block content
-  h1= title
-  #articles
-    - each article in articles
-      div.article
-        div.created_at= article.created_at
-        div.title 
-          a(href="/blog/"+article._id.toHexString())!= article.title
-        div.body= article.body
+	#articles
+		- each article in articles
+			div.row
+				div.span2
+					div.title= article.title
+					div.created_at= article.created_at.toDateString()
+				div.span7.content.well
+					p.body= article.body
+					a(href="/blog/"+article._id.toHexString(), class='pull-right') read more >>

@@ -1,7 +1,7 @@
 exports.index = function(req, res){
   articleProvider.findAll(function(error, docs){
     res.render('index', {
-      title: 'Blog',
+      title: 'Blogs',
       articles: docs
     })
   });
