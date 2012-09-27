@@ -7,6 +7,7 @@ body {
 }
 .footer {
   border-top: 1px solid whiteSmoke;
+  margin-top: 30px;
 }
 .footer .info {
   padding: 20px;
@@ -16,19 +17,21 @@ body {
   margin-bottom: 30px;
   border-bottom: 1px solid whiteSmoke;
 }
-#articles .title {
+.comments .title {
+  margin-bottom: 30px;
+  border-top: 1px solid whiteSmoke;
+}
+.comments .row {
+  margin-left: 0;
+}
+.comments .row .column {
+  border-top: 1px solid whiteSmoke;
+  padding: 20px;
+}
+.comments input,
+.comments textarea {
+  width: 100%;
+}
+.title {
   margin: 10px 0;
-}
-.article input[type =text] {
-  width: 490px;
-  margin-left: 16px;
-}
-.article input[type =button],
-.article input[type =submit] {
-  text-align: left;
-  margin-left: 440px;
-}
-.article textarea {
-  width: 490px;
-  height: 90px;
 }

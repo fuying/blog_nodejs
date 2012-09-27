@@ -1,24 +1,32 @@
 extends layout
 
-block content
+block header
 	h1= title
+	div.created_at= article.created_at.toDateString()
+
+block content
 	div.article
-		div.created_at= article.created_at
-		div.title= article.title
-		div.body= article.body
-		h3 Comment
+		div.content.well= article.body
+	div.comments
+		div.title
+			h4 Comments
 		- each comment in article.comments
-			div.comment
-				div.person= comment.person
-				div.comment= comment.comment
-		div
-			form( method="post", action="/blog/addComment")
+			div.row
+				div.span2.column
+					div.author= comment.person
+				div.comment.span6.column= comment.comment
+		div.leave-comment.span8
+			div.title
+				h4 leave your comment
+			form(method="post", action="/blog/addComment", class='form-horizontal')
 				input( type="hidden", name="_id", value=article._id.toHexString())
-				div
-					span Author :
-					input( type="text", name="person", id="addCommentPerson")
-				div
-					span Comment :
-					textarea( name="comment", rows=5, id="addCommentComment")
-				div#editArticleSubmit
-					input(type="submit", value="Send")
+				div.control-group
+					label(for='addCommentPerson', class='control-label') Author:
+					div.controls
+						input( type="text", name="person", id="addCommentPerson")
+				div.control-group
+					label(for='addCommentComment', class='control-label') Comment:
+					div.controls
+						textarea( name="comment", rows=3, id="addCommentComment")
+				div#editArticleSubmit.form-action
+					input(type="submit", value="Send", class="btn btn-primary pull-right")
